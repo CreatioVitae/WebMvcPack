@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 
 namespace Microsoft.AspNetCore.Mvc {
-    public static class ControllerExtensionLibrary {
+    public static class ControllerExtensions {
         [NonAction]
         public static ViewResult BadRequestView(this Controller controller, (string key, string errorMessage)? modelError) =>
             controller.AddModelErrorIfModelErrorHasValue(modelError).CreateViewWithHttpStatusCode(null, HttpStatusCode.BadRequest);
