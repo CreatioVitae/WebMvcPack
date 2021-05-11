@@ -6,8 +6,8 @@ namespace Microsoft.AspNetCore.Http {
             session.Set(key, JsonSerializer.SerializeToUtf8Bytes(target, new() { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true }));
 
         public static T? Get<T>(this ISession session, string key) =>
-            session.Get(key) is var json && json is null
+            session.Get(key) is var bytes && bytes is null
                 ? default
-                : JsonSerializer.Deserialize<T>(json);
+                : JsonSerializer.Deserialize<T>(bytes);
     }
 }
