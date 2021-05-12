@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>0.4.1-beta</Version>
+    <Version>0.4.3-beta</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.4.1.0</AssemblyVersion>
+    <AssemblyVersion>0.4.3.0</AssemblyVersion>
     <PackageReleaseNotes>Add Session Extensions...</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>

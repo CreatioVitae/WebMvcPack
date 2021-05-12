@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json;
 
 namespace Microsoft.AspNetCore.Http {
@@ -8,6 +9,6 @@ namespace Microsoft.AspNetCore.Http {
         public static T? Get<T>(this ISession session, string key) =>
             session.Get(key) is var bytes && bytes is null
                 ? default
-                : JsonSerializer.Deserialize<T>(bytes);
+                : JsonSerializer.Deserialize<T>(new ReadOnlySpan<byte>(bytes), new() { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true });
     }
 }
