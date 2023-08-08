@@ -11,8 +11,12 @@ public static class ServiceCollectionExtensions {
             .SetApplicationName(redisSessionOptions.ApplicationName)
             .PersistKeysToStackExchangeRedis(ConnectionMultiplexer.Connect(redisSessionOptions.ConnectionString), redisSessionOptions.RedisKey);
 
-        services.AddSession(options => {
-            options = redisSessionOptions.SessionOptions;
+        var sessionOptions = redisSessionOptions.SessionOptions;
+
+        _ = services.AddSession(options => {
+            options.IdleTimeout = sessionOptions.IdleTimeout;
+            options.Cookie.HttpOnly = sessionOptions.Cookie.HttpOnly;
+            options.Cookie.IsEssential = sessionOptions.Cookie.IsEssential;
         });
 
         return services;
